@@ -18,6 +18,13 @@ set laststatus=2
 nnoremap d "_d
 nnoremap x "_x
 
+imap <C-j> <esc>
+noremap! <C-j> <esc>
+
+nnoremap s <Nop>
+nnoremap sb :<C-u>Unite buffer<CR>
+nnoremap su :<C-u>Unite file_mru buffer<CR>
+
 colorscheme hybrid
 
 highlight Normal ctermbg=none
@@ -26,6 +33,8 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'elixir-lang/vim-elixir'
 Plug 'Shougo/neocomplete.vim'
+Plug 'Shougo/unite.vim'
+Plug 'Shougo/neomru.vim'
 
 call plug#end()
 
