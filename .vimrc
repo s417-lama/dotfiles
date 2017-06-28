@@ -35,8 +35,17 @@ Plug 'elixir-lang/vim-elixir'
 Plug 'Shougo/neocomplete.vim'
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/neomru.vim'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-session'
 
 call plug#end()
+
+let g:session_default_name = '.session'
+let g:session_extension = '.vim'
+let g:session_directory = getcwd()
+let g:session_autosave = 'yes'
+let g:session_autoload = 'yes'
+let g:session_autosave_periodic = 1
 
 "Note: This option must be set in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
 " Disable AutoComplPop.
