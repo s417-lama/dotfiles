@@ -66,6 +66,7 @@ let g:airline_symbols.readonly = '⭤'
 let g:airline_symbols.linenr = '⭡'
 
 let g:tmuxline_theme = 'behelit'
+let g:airline#extensions#tmuxline#enabled = 0
 let g:tmuxline_separators = {
     \ 'left' : '⮀',
     \ 'left_alt': '⮁',
