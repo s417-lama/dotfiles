@@ -14,6 +14,7 @@ set incsearch
 set clipboard^=unnamedplus
 set background=dark
 set laststatus=2
+set t_Co=256
 
 nnoremap d "_d
 nnoremap x "_x
@@ -37,15 +38,39 @@ Plug 'Shougo/unite.vim'
 Plug 'Shougo/neomru.vim'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-fugitive'
+Plug 'edkolev/tmuxline.vim'
 
 call plug#end()
 
 let g:session_default_name = '.session'
 let g:session_extension = '.vim'
 let g:session_directory = getcwd()
-let g:session_autosave = 'yes'
+let g:session_autosave = 'no'
 let g:session_autoload = 'yes'
 let g:session_autosave_periodic = 1
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'behelit'
+
+let g:airline_symbols = {}
+let g:airline_left_sep = '⮀'
+let g:airline_left_alt_sep = '⮁'
+let g:airline_right_sep = '⮂'
+let g:airline_right_alt_sep = '⮃'
+let g:airline_symbols.branch = '⭠'
+let g:airline_symbols.readonly = '⭤'
+let g:airline_symbols.linenr = '⭡'
+
+let g:tmuxline_theme = 'behelit'
+let g:tmuxline_separators = {
+    \ 'left' : '⮀',
+    \ 'left_alt': '⮁',
+    \ 'right' : '⮂',
+    \ 'right_alt' : '⮃'}
 
 "Note: This option must be set in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
 " Disable AutoComplPop.
