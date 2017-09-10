@@ -42,6 +42,9 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'edkolev/tmuxline.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'lervag/vimtex'
 
 call plug#end()
 
@@ -72,6 +75,10 @@ let g:tmuxline_separators = {
     \ 'left_alt': '⮁',
     \ 'right' : '⮂',
     \ 'right_alt' : '⮃'}
+
+let g:jsx_ext_required = 0
+
+let g:vimtex_compiler_enabled=0
 
 "Note: This option must be set in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
 " Disable AutoComplPop.
