@@ -7,3 +7,4 @@ ln -sf $DIR/.tmux.conf ~/.tmux.conf
 ln -snf $DIR/.vim/colors ~/.vim
 ln -snf $DIR/.tmux/tmuxline.conf ~/.tmux/tmuxline.conf
 ln -snf $DIR/.config/fish/config.fish ~/.config/fish/config.fish
+ln -snf $DIR/.cgdb/cgdbrc ~/.cgdb/cgdbrc
