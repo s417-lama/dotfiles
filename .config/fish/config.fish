@@ -7,6 +7,7 @@ function fish_user_key_bindings
   end
   fish_vi_key_bindings --no-erase
   bind -M insert -m default \cj force-repaint backward-char
+  bind -M insert \co 'commandline -i \ \\\\\n'
 end
 
 function _git_branch_name
