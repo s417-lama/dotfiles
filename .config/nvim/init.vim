@@ -28,6 +28,7 @@ noremap <S-j> }
 noremap <S-k> {
 noremap <S-l> $
 noremap m %
+vmap f gc
 
 nnoremap d "_d
 nnoremap x "_x
@@ -54,6 +55,11 @@ if dein#load_state('~/.local/share/dein')
     call dein#add('slashmili/alchemist.vim')
     call dein#add('zchee/deoplete-clang')
     call dein#add('zchee/deoplete-jedi')
+    call dein#add('elixir-editors/vim-elixir')
+    call dein#add('tpope/vim-commentary')
+    call dein#add('vim-airline/vim-airline')
+    call dein#add('vim-airline/vim-airline-themes')
+    call dein#add('edkolev/tmuxline.vim')
 
     call dein#end()
     call dein#save_state()
@@ -76,3 +82,24 @@ function! s:check_back_space() abort "{{{
 let col = col('.') - 1
 return !col || getline('.')[col - 1]  =~ '\s'
 endfunction"}}}
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'behelit'
+
+let g:airline_symbols = {}
+let g:airline_left_sep = '⮀'
+let g:airline_left_alt_sep = '⮁'
+let g:airline_right_sep = '⮂'
+let g:airline_right_alt_sep = '⮃'
+let g:airline_symbols.branch = '⭠'
+let g:airline_symbols.readonly = '⭤'
+let g:airline_symbols.linenr = '⭡'
+
+let g:tmuxline_theme = 'behelit'
+let g:airline#extensions#tmuxline#enabled = 0
+let g:tmuxline_separators = {
+    \ 'left' : '⮀',
+    \ 'left_alt': '⮁',
+    \ 'right' : '⮂',
+    \ 'right_alt' : '⮃'}
