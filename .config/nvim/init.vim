@@ -8,7 +8,7 @@ set smartindent
 set virtualedit=onemore,block
 set cursorline
 set showmatch
-set whichwrap=b,s,h,l,[,],<,>
+set whichwrap=b,s,[,],<,>
 set hlsearch
 set incsearch
 set clipboard^=unnamedplus
@@ -35,15 +35,44 @@ nnoremap x "_x
 imap <C-j> <esc>
 noremap! <C-j> <esc>
 
-inoremap <expr> <C-o> pumvisible() ? "\<C-n>" : "\<C-x><C-o>"
-inoremap <expr> <C-f> pumvisible() ? "\<C-n>" : "\<C-x><C-n>"
-inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
-
-nnoremap s <Nop>
-nnoremap sb :<C-u>Unite buffer<CR>
-nnoremap su :<C-u>Unite file_mru buffer<CR>
-
-colorscheme iceberg
+colorscheme hybrid
 
 au ColorScheme * hi Normal ctermbg=none guibg=none
 au ColorScheme * hi LineNr ctermbg=none guibg=none
+
+if &compatible
+    set nocompatible
+endif
+set runtimepath+=~/.local/share/dein/repos/github.com/Shougo/dein.vim
+
+if dein#load_state('~/.local/share/dein')
+    call dein#begin('~/.local/share/dein')
+
+    call dein#add('~/.local/share/dein/repos/github.com/Shougo/dein.vim')
+    call dein#add('Shougo/deoplete.nvim')
+    call dein#add('Shougo/neco-syntax')
+    call dein#add('slashmili/alchemist.vim')
+    call dein#add('zchee/deoplete-clang')
+    call dein#add('zchee/deoplete-jedi')
+
+    call dein#end()
+    call dein#save_state()
+endif
+
+filetype plugin indent on
+syntax enable
+
+if dein#check_install()
+    call dein#install()
+endif
+
+let g:deoplete#enable_at_startup = 1
+
+inoremap <silent><expr> <TAB>
+\ pumvisible() ? "\<C-n>" :
+\ <SID>check_back_space() ? "\<TAB>" :
+\ deoplete#mappings#manual_complete()
+function! s:check_back_space() abort "{{{
+let col = col('.') - 1
+return !col || getline('.')[col - 1]  =~ '\s'
+endfunction"}}}
