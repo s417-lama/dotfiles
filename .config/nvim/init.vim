@@ -20,6 +20,7 @@ set encoding=utf-8
 set fileencoding=utf-8
 set ignorecase
 set smartcase
+set completeopt-=preview
 
 nnoremap j gj
 nnoremap k gk
@@ -73,6 +74,11 @@ if dein#check_install()
 endif
 
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#auto_complete_delay = 0
+let g:deoplete#auto_refresh_delay = 0
+
+let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-5.0/lib/libclang.so'
+let g:deoplete#sources#clang#clang_header = '/usr/include/clang'
 
 inoremap <silent><expr> <TAB>
 \ pumvisible() ? "\<C-n>" :
