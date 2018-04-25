@@ -61,6 +61,7 @@ if dein#load_state('~/.local/share/dein')
     call dein#add('vim-airline/vim-airline')
     call dein#add('vim-airline/vim-airline-themes')
     call dein#add('edkolev/tmuxline.vim')
+    call dein#add('bronson/vim-trailing-whitespace')
 
     call dein#end()
     call dein#save_state()
