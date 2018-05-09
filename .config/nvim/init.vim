@@ -37,11 +37,6 @@ nnoremap x "_x
 imap <C-j> <esc>
 noremap! <C-j> <esc>
 
-colorscheme hybrid
-
-au ColorScheme * hi Normal ctermbg=none guibg=none
-au ColorScheme * hi LineNr ctermbg=none guibg=none
-
 if &compatible
     set nocompatible
 endif
@@ -62,6 +57,8 @@ if dein#load_state('~/.local/share/dein')
     call dein#add('vim-airline/vim-airline-themes')
     call dein#add('edkolev/tmuxline.vim')
     call dein#add('bronson/vim-trailing-whitespace')
+    call dein#add('w0ng/vim-hybrid')
+    call dein#add('reedes/vim-colors-pencil')
 
     call dein#end()
     call dein#save_state()
@@ -69,6 +66,11 @@ endif
 
 filetype plugin indent on
 syntax enable
+
+au ColorScheme * hi Normal ctermbg=none guibg=none
+au ColorScheme * hi LineNr ctermbg=none guibg=none
+
+colorscheme hybrid
 
 if dein#check_install()
     call dein#install()
