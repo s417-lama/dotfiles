@@ -66,9 +66,8 @@ endif
 filetype plugin indent on
 syntax enable
 
-au ColorScheme * hi Normal ctermbg=none guibg=none
-au ColorScheme * hi LineNr ctermbg=none guibg=none
-
+let g:hybrid_custom_term_colors = 1
+let g:hybrid_reduced_contrast = 1
 colorscheme hybrid
 
 if dein#check_install()
