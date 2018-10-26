@@ -6,7 +6,7 @@ ln -sf $DIR/.tmux.conf ~/.tmux.conf
 ln -sf $DIR/.gitignore_global ~/.gitignore_global
 ln -sf $DIR/.gitconfig ~/.gitconfig
 mkdir -p ~/.tmux
-ln -sf $DIR/.tmux/tmuxline.conf ~/.tmux/tmuxline.conf
+ln -sf $DIR/.tmux/myline.conf ~/.tmux/myline.conf
 mkdir -p ~/.config/fish
 ln -sf $DIR/.config/fish/config.fish ~/.config/fish/config.fish
 mkdir -p ~/.cgdb
