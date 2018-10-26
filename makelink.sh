@@ -13,3 +13,6 @@ mkdir -p ~/.cgdb
 ln -sf $DIR/.cgdb/cgdbrc ~/.cgdb/cgdbrc
 mkdir -p ~/.config/nvim
 ln -sf $DIR/.config/nvim/init.vim ~/.config/nvim/init.vim
+
+TERM_SETTING="export TERM=xterm-256color"
+grep -q "$TERM_SETTING" ~/.bashrc || echo $TERM_SETTING >> ~/.bashrc
