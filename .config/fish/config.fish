@@ -48,7 +48,7 @@ function fish_prompt
     set -l git_branch (_git_branch_name)
 
     if [ (_git_is_dirty) ]
-      set git_info $yellow $git_branch "*" $normal
+      set git_info $yellow $git_branch " *" $normal
     else
       set git_info $green $git_branch $normal
     end
@@ -73,9 +73,9 @@ function fish_prompt
 end
 
 # set color for man
-set -xU LESS_TERMCAP_md (printf "\e[01;31m")
+set -xU LESS_TERMCAP_md (printf "\e[01;34m")
 set -xU LESS_TERMCAP_me (printf "\e[0m")
 set -xU LESS_TERMCAP_se (printf "\e[0m")
-set -xU LESS_TERMCAP_so (printf "\e[01;44;33m")
+set -xU LESS_TERMCAP_so (printf "\e[01;40;33m")
 set -xU LESS_TERMCAP_ue (printf "\e[0m")
-set -xU LESS_TERMCAP_us (printf "\e[01;32m")
+set -xU LESS_TERMCAP_us (printf "\e[01;31m")
