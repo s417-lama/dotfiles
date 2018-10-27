@@ -54,7 +54,6 @@ if dein#load_state('~/.cache/dein')
     call dein#add('tpope/vim-commentary')
     call dein#add('vim-airline/vim-airline')
     call dein#add('vim-airline/vim-airline-themes')
-    call dein#add('edkolev/tmuxline.vim')
     call dein#add('bronson/vim-trailing-whitespace')
     call dein#add('w0ng/vim-hybrid')
     call dein#add('reedes/vim-colors-pencil')
@@ -137,13 +136,3 @@ let g:airline_right_alt_sep = '⮃'
 let g:airline_symbols.branch = '⭠'
 let g:airline_symbols.readonly = '⭤'
 let g:airline_symbols.linenr = '⭡'
-
-let g:tmuxline_theme = 'behelit'
-
-let g:airline#extensions#tmuxline#enabled = 0
-let g:tmuxline_separators = {
-    \ 'left' : '⮀',
-    \ 'left_alt': '⮁',
-    \ 'right' : '⮂',
-    \ 'right_alt' : '⮃'}
-
