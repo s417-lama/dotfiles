@@ -62,16 +62,12 @@ if dein#load_state('~/.cache/dein')
     call dein#save_state()
 endif
 
-filetype plugin indent on
-syntax enable
-
-let g:hybrid_custom_term_colors = 1
-let g:hybrid_reduced_contrast = 1
-colorscheme hybrid
-
 if dein#check_install()
     call dein#install()
 endif
+
+filetype plugin indent on
+syntax enable
 
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#auto_complete_delay = 0
@@ -89,6 +85,12 @@ let col = col('.') - 1
 return !col || getline('.')[col - 1]  =~ '\s'
 endfunction"}}}
 
+let g:hybrid_custom_term_colors = 1
+let g:hybrid_reduced_contrast = 1
+colorscheme hybrid
+
+hi CursorLineNr ctermbg=8 ctermfg=3 guibg=#2A363E guifg=#81A2BE
+
 let g:airline#extensions#tabline#enabled = 1
 
 " set color of 'base16_vim' theme for airline
@@ -96,7 +98,7 @@ let g:base16_gui00 = "2A363E"
 let g:base16_gui01 = "2A363E"
 let g:base16_gui02 = "425059"
 let g:base16_gui03 = "585858"
-let g:base16_gui04 = "b8b8b8"
+let g:base16_gui04 = "8F9E9A"
 let g:base16_gui05 = "C5C8C6"
 let g:base16_gui06 = "e8e8e8"
 let g:base16_gui07 = "f8f8f8"
@@ -124,6 +126,7 @@ let g:base16_cterm0C = "06"  " cyan
 let g:base16_cterm0D = "03"  " yellow
 let g:base16_cterm0E = "05"  " magenta
 let g:base16_cterm0F = "14"
+let g:airline_base16_improved_contrast = 1
 
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'base16_vim'
