@@ -58,7 +58,7 @@ function fish_prompt
   set -l prompt_color $normal
   switch $fish_bind_mode
     case default
-      set prompt_color $green
+      set prompt_color $yellow
     case insert
       set prompt_color $normal
     case replace-one
