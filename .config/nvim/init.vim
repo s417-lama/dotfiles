@@ -31,10 +31,21 @@ noremap <S-l> $
 noremap m %
 vmap f gc
 
-noremap d "_d
-noremap x "_x
+nnoremap d "_d
+vnoremap d "_d
+nnoremap D "_D
+vnoremap D "_D
+nnoremap c "_c
+vnoremap c "_c
+nnoremap C "_C
+vnoremap C "_C
+nnoremap s "_s
+vnoremap s "_s
+nnoremap S "_S
+vnoremap S "_S
+nnoremap x "_x
+vnoremap p "_dP
 
-" imap <C-j> <esc>
 noremap! <C-j> <esc>
 
 if &compatible
