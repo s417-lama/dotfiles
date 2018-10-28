@@ -11,7 +11,7 @@ set showmatch
 set whichwrap=b,s,[,],<,>
 set hlsearch
 set incsearch
-set clipboard^=unnamedplus
+set clipboard+=unnamed,unnamedplus
 set background=dark
 set laststatus=2
 set ttimeoutlen=10
@@ -22,8 +22,8 @@ set ignorecase
 set smartcase
 set completeopt-=preview
 
-nnoremap j gj
-nnoremap k gk
+noremap j gj
+noremap k gk
 noremap <S-h> ^
 noremap <S-j> }
 noremap <S-k> {
@@ -31,10 +31,10 @@ noremap <S-l> $
 noremap m %
 vmap f gc
 
-nnoremap d "_d
-nnoremap x "_x
+noremap d "_d
+noremap x "_x
 
-imap <C-j> <esc>
+" imap <C-j> <esc>
 noremap! <C-j> <esc>
 
 if &compatible
