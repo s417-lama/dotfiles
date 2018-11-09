@@ -21,6 +21,8 @@ set fileencoding=utf-8
 set ignorecase
 set smartcase
 set completeopt-=preview
+set wildmenu
+set wildmode=list:longest,list:full
 
 noremap j gj
 noremap k gk
