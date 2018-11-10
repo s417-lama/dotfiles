@@ -7,6 +7,8 @@ ln -sf $DIR/.gitignore_global ~/.gitignore_global
 ln -sf $DIR/.gitconfig ~/.gitconfig
 mkdir -p ~/.tmux
 ln -sf $DIR/.tmux/myline.conf ~/.tmux/myline.conf
+mkdir -p ~/.config
+ln -sf $DIR/.config/libinput-gestures.conf ~/.config/libinput-gestures.conf
 mkdir -p ~/.config/fish
 ln -sf $DIR/.config/fish/config.fish ~/.config/fish/config.fish
 mkdir -p ~/.cgdb
