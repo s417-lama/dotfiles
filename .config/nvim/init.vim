@@ -1,9 +1,9 @@
 set number
 set title
 set ambiwidth=double
-set tabstop=4
+set tabstop=2
 set expandtab
-set shiftwidth=4
+set shiftwidth=2
 set smartindent
 set virtualedit=onemore,block
 set cursorline
@@ -50,6 +50,8 @@ vnoremap p "_dP
 
 noremap! <C-j> <esc>
 
+nnoremap <C-]> g<C-]>
+
 if &compatible
     set nocompatible
 endif
@@ -68,8 +70,15 @@ if dein#load_state('~/.cache/dein')
     call dein#add('vim-airline/vim-airline')
     call dein#add('vim-airline/vim-airline-themes')
     call dein#add('bronson/vim-trailing-whitespace')
+
     call dein#add('w0ng/vim-hybrid')
     call dein#add('reedes/vim-colors-pencil')
+    call dein#add('NLKNguyen/papercolor-theme')
+    call dein#add('rakr/vim-one')
+
+    call dein#add('xolox/vim-misc')
+    call dein#add('xolox/vim-colorscheme-switcher')
+    call dein#add('~/workspace/github/carbonpaper.vim')
 
     call dein#end()
     call dein#save_state()
@@ -82,12 +91,17 @@ endif
 filetype plugin indent on
 syntax enable
 
-let g:deoplete#enable_at_startup = 1
+let g:carbonpaper#colorscheme          = 'PaperColor'
+let g:carbonpaper#background           = 'light'
+let g:carbonpaper#set_background_color = 0
+let g:carbonpaper#highlight_bold       = 1
+
+let g:deoplete#enable_at_startup   = 1
 let g:deoplete#auto_complete_delay = 0
-let g:deoplete#auto_refresh_delay = 0
+let g:deoplete#auto_refresh_delay  = 0
 
 let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-6.0/lib/libclang.so'
-let g:deoplete#sources#clang#clang_header = '/usr/include/clang'
+let g:deoplete#sources#clang#clang_header  = '/usr/include/clang'
 
 inoremap <silent><expr> <TAB>
 \ pumvisible() ? "\<C-n>" :
