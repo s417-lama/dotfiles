@@ -70,6 +70,7 @@ if dein#load_state('~/.cache/dein')
     call dein#add('vim-airline/vim-airline')
     call dein#add('vim-airline/vim-airline-themes')
     call dein#add('bronson/vim-trailing-whitespace')
+    call dein#add('christoomey/vim-tmux-navigator')
 
     call dein#add('w0ng/vim-hybrid')
     call dein#add('reedes/vim-colors-pencil')
@@ -119,6 +120,13 @@ colorscheme hybrid
 hi CursorLineNr ctermbg=8 ctermfg=3 guibg=#2A363E guifg=#81A2BE
 
 let g:airline#extensions#tabline#enabled = 1
+
+" vim-tmux-navigator
+let g:tmux_navigator_no_mappings = 1
+nnoremap <silent> <C-[> :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-q> :TmuxNavigateDown<cr>
+nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <C-s> :TmuxNavigateRight<cr>
 
 " set color of 'base16_vim' theme for airline
 let g:base16_gui00 = "2A363E"
