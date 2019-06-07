@@ -30,7 +30,6 @@ noremap <S-j> }
 noremap <S-k> {
 noremap <S-l> $
 noremap m %
-vmap f gc
 
 nnoremap d "_d
 vnoremap d "_d
@@ -89,3 +88,16 @@ hi clear SpellBad
 hi SpellBad gui=underline,bold guibg=#2D3C46
 hi clear SpellCap
 hi SpellCap gui=underline,bold
+
+" .vimrc.local
+augroup vimrc-local
+  autocmd!
+  autocmd BufNewFile,BufReadPost * call s:vimrc_local(expand('<afile>:p:h'))
+augroup END
+
+function! s:vimrc_local(loc)
+  let files = findfile('.vimrc.local', escape(a:loc, ' ') . ';', -1)
+  for i in reverse(filter(files, 'filereadable(v:val)'))
+    source `=i`
+  endfor
+endfunction
