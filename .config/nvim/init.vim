@@ -12,7 +12,6 @@ set whichwrap=b,s,[,],<,>
 set hlsearch
 set incsearch
 set clipboard+=unnamed,unnamedplus
-set background=dark
 set laststatus=2
 set ttimeoutlen=10
 set termguicolors
@@ -52,125 +51,41 @@ noremap! <C-j> <esc>
 
 nnoremap <C-]> g<C-]>
 
+" dein
+let s:dein_base_path = '~/.cache/dein'
+let s:dein_path = '~/.cache/dein/repos/github.com/Shougo/dein.vim'
+let s:toml_dir = '~/.config/nvim'
+
 if &compatible
-    set nocompatible
+  set nocompatible
 endif
-set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
+let &runtimepath = s:dein_path .",". &runtimepath
 
-if dein#load_state('~/.cache/dein')
-    call dein#begin('~/.cache/dein')
-
-    call dein#add('Shougo/deoplete.nvim')
-    call dein#add('Shougo/neco-syntax')
-    call dein#add('slashmili/alchemist.vim')
-    call dein#add('zchee/deoplete-clang')
-    call dein#add('zchee/deoplete-jedi')
-    call dein#add('elixir-editors/vim-elixir')
-    call dein#add('tpope/vim-commentary')
-    call dein#add('vim-airline/vim-airline')
-    call dein#add('vim-airline/vim-airline-themes')
-    call dein#add('bronson/vim-trailing-whitespace')
-    call dein#add('christoomey/vim-tmux-navigator')
-
-    call dein#add('w0ng/vim-hybrid')
-    call dein#add('reedes/vim-colors-pencil')
-    call dein#add('NLKNguyen/papercolor-theme')
-    call dein#add('rakr/vim-one')
-
-    call dein#add('xolox/vim-misc')
-    call dein#add('xolox/vim-colorscheme-switcher')
-    call dein#add('~/workspace/github/carbonpaper.vim')
-
-    call dein#end()
-    call dein#save_state()
+if dein#load_state(s:dein_base_path)
+  call dein#begin(s:dein_base_path)
+  call dein#add(s:dein_path)
+  call dein#load_toml(s:toml_dir . '/dein.toml'     , {'lazy': 0})
+  call dein#load_toml(s:toml_dir . '/dein_lazy.toml', {'lazy': 1})
+  call dein#end()
+  call dein#save_state()
 endif
 
 if dein#check_install()
-    call dein#install()
+  call dein#install()
 endif
 
 filetype plugin indent on
 syntax enable
 
-let g:carbonpaper#colorscheme          = 'PaperColor'
-let g:carbonpaper#background           = 'light'
-let g:carbonpaper#set_background_color = 0
-let g:carbonpaper#highlight_bold       = 1
-
-let g:deoplete#enable_at_startup   = 1
-let g:deoplete#auto_complete_delay = 0
-let g:deoplete#auto_refresh_delay  = 0
-
-let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-6.0/lib/libclang.so'
-let g:deoplete#sources#clang#clang_header  = '/usr/include/clang'
-
-inoremap <silent><expr> <TAB>
-\ pumvisible() ? "\<C-n>" :
-\ <SID>check_back_space() ? "\<TAB>" :
-\ deoplete#mappings#manual_complete()
-function! s:check_back_space() abort "{{{
-let col = col('.') - 1
-return !col || getline('.')[col - 1]  =~ '\s'
-endfunction"}}}
-
-let g:hybrid_custom_term_colors = 1
-let g:hybrid_reduced_contrast = 1
+" colorscheme
+set background=dark
 colorscheme hybrid
-
 hi CursorLineNr ctermbg=8 ctermfg=3 guibg=#2A363E guifg=#81A2BE
 
-let g:airline#extensions#tabline#enabled = 1
-
-" vim-tmux-navigator
-let g:tmux_navigator_no_mappings = 1
-nnoremap <silent> <C-[> :TmuxNavigateLeft<cr>
-nnoremap <silent> <C-q> :TmuxNavigateDown<cr>
-nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
-nnoremap <silent> <C-s> :TmuxNavigateRight<cr>
-
-" set color of 'base16_vim' theme for airline
-let g:base16_gui00 = "2A363E"
-let g:base16_gui01 = "2A363E"
-let g:base16_gui02 = "425059"
-let g:base16_gui03 = "585858"
-let g:base16_gui04 = "8F9E9A"
-let g:base16_gui05 = "C5C8C6"
-let g:base16_gui06 = "e8e8e8"
-let g:base16_gui07 = "f8f8f8"
-let g:base16_gui08 = "CC6666"
-let g:base16_gui09 = "dc9656"
-let g:base16_gui0A = "f7ca88"
-let g:base16_gui0B = "81A2BE"
-let g:base16_gui0C = "86c1b9"
-let g:base16_gui0D = "C48459"
-let g:base16_gui0E = "B294BB"
-let g:base16_gui0F = "a16946"
-let g:base16_cterm00 = "00"  " black
-let g:base16_cterm01 = "10"
-let g:base16_cterm02 = "11"
-let g:base16_cterm03 = "08"  " brblack
-let g:base16_cterm04 = "12"
-let g:base16_cterm05 = "07"  " white
-let g:base16_cterm06 = "13"
-let g:base16_cterm07 = "15"
-let g:base16_cterm08 = "01"  " red
-let g:base16_cterm09 = "09"
-let g:base16_cterm0A = "02"  " green
-let g:base16_cterm0B = "04"  " blue
-let g:base16_cterm0C = "06"  " cyan
-let g:base16_cterm0D = "03"  " yellow
-let g:base16_cterm0E = "05"  " magenta
-let g:base16_cterm0F = "14"
-let g:airline_base16_improved_contrast = 1
-
-let g:airline_powerline_fonts = 1
-let g:airline_theme = 'base16_vim'
-
-let g:airline_symbols = {}
-let g:airline_left_sep = '⮀'
-let g:airline_left_alt_sep = '⮁'
-let g:airline_right_sep = '⮂'
-let g:airline_right_alt_sep = '⮃'
-let g:airline_symbols.branch = '⭠'
-let g:airline_symbols.readonly = '⭤'
-let g:airline_symbols.linenr = '⭡'
+" spell
+autocmd FileType plaintex,tex,latex setlocal spell
+set spelllang=en,cjk
+hi clear SpellBad
+hi SpellBad gui=underline,bold guibg=#2D3C46
+hi clear SpellCap
+hi SpellCap gui=underline,bold
