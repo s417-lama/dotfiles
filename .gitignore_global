@@ -3,3 +3,4 @@ tags
 .ctags
 .vimrc.local
 .ccls-cache
+.elixir_ls
