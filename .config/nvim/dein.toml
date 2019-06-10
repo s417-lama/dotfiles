@@ -22,10 +22,6 @@ repo = 'w0rp/ale'
 hook_add = '''
   let g:ale_c_ccls_executable = expand('~/opt/ccls/bin/ccls')
   let g:ale_cpp_ccls_executable = expand('~/opt/ccls/bin/ccls')
-  " let g:ale_c_cquery_executable = expand('~/opt/cquery/bin/cquery')
-  " let g:ale_cpp_cquery_executable = expand('~/opt/cquery/bin/cquery')
-  " let g:ale_c_clangd_executable = expand('/usr/bin/clangd-7')
-  " let g:ale_cpp_clangd_executable = expand('/usr/bin/clangd-7')
   let g:ale_elixir_elixir_ls_release = expand('~/opt/elixir-ls')
   let g:ale_linters = {
   \ 'c'     : ['ccls'],
@@ -37,9 +33,9 @@ hook_add = '''
   \ '*': ['remove_trailing_lines', 'trim_whitespace'],
   \}
 
-  nnoremap <silent> <C-]> :ALEGoToDefinition<CR>
-  nmap <silent> m <Plug>(ale_next_wrap)
-  nmap <silent> M <Plug>(ale_previous_wrap)
+  nmap <silent> <C-]> <Plug>(ale_go_to_definition)
+  nmap <silent> m     <Plug>(ale_next_wrap)
+  nmap <silent> M     <Plug>(ale_previous_wrap)
 '''
 
 [[plugins]]
