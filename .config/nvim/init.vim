@@ -80,6 +80,9 @@ syntax enable
 set background=dark
 colorscheme hybrid
 hi CursorLineNr ctermbg=8 ctermfg=3 guibg=#2A363E guifg=#81A2BE
+hi ALEErrorSign ctermbg=8 ctermfg=3 guibg=#2A363E guifg=#81A2BE
+hi ALEWarningSign ctermbg=8 ctermfg=3 guibg=#2A363E guifg=#81A2BE
+hi clear SignColumn
 
 " spell
 autocmd FileType plaintex,tex,latex setlocal spell

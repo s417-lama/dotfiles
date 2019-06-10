@@ -32,7 +32,14 @@ hook_add = '''
   \ 'cpp'   : ['ccls'],
   \ 'elixir': ['elixir-ls'],
   \}
+  let g:ale_linters_explicit = 1
+  let g:ale_fixers = {
+  \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+  \}
+
   nnoremap <silent> <C-]> :ALEGoToDefinition<CR>
+  nmap <silent> m <Plug>(ale_next_wrap)
+  nmap <silent> M <Plug>(ale_previous_wrap)
 '''
 
 [[plugins]]
