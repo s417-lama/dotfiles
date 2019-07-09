@@ -85,3 +85,4 @@ set -xU LESS_TERMCAP_us (printf "\e[01;31m")
 
 source ~/.asdf/asdf.fish
 set -gx PATH (asdf where elixir)/.mix/escripts $PATH
+source $HOME/.cargo/env
