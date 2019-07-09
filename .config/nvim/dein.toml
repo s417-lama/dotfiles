@@ -34,8 +34,8 @@ hook_add = '''
   \}
 
   nmap <silent> <C-]> <Plug>(ale_go_to_definition)
-  nmap <silent> m     <Plug>(ale_next_wrap)
-  nmap <silent> M     <Plug>(ale_previous_wrap)
+  nmap <silent> gn    <Plug>(ale_next_wrap)
+  nmap <silent> gN    <Plug>(ale_previous_wrap)
 '''
 
 [[plugins]]
@@ -70,6 +70,9 @@ depends = ['context_filetype.vim']
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
+
+[[plugins]]
+repo = 'pangloss/vim-javascript'
 
 #
 # airline
@@ -161,7 +164,7 @@ hook_add = '''
   let g:carbonpaper#colorscheme          = 'PaperColor'
   let g:carbonpaper#background           = 'light'
   let g:carbonpaper#set_background_color = 0
-  let g:carbonpaper#highlight_bold       = 1
+  " let g:carbonpaper#highlight_bold       = 1
 '''
 
 [[plugins]]

@@ -50,6 +50,11 @@ noremap! <C-j> <esc>
 
 nnoremap <C-]> g<C-]>
 
+augroup project
+  autocmd!
+  autocmd BufRead,BufNewFile *.h,*.c set filetype=c
+augroup END
+
 " dein
 let s:dein_base_path = '~/.cache/dein'
 let s:dein_path = '~/.cache/dein/repos/github.com/Shougo/dein.vim'
