@@ -83,6 +83,10 @@ set -xU LESS_TERMCAP_so (printf "\e[01;40;33m")
 set -xU LESS_TERMCAP_ue (printf "\e[0m")
 set -xU LESS_TERMCAP_us (printf "\e[01;31m")
 
+# aliases
+alias myrsync=~/.myscripts/myrsync.bash
+
+# paths
 source ~/.asdf/asdf.fish
 set -gx PATH (asdf where elixir)/.mix/escripts $PATH
 source $HOME/.cargo/env
