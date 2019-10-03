@@ -85,6 +85,8 @@ set -xU LESS_TERMCAP_us (printf "\e[01;31m")
 
 # aliases
 alias myrsync=~/.myscripts/myrsync.bash
+alias remote_run=~/.myscripts/remote_run.bash
+alias svgcrop=~/.myscripts/svgcrop.bash
 
 # paths
 source ~/.asdf/asdf.fish
