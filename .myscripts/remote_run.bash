@@ -8,9 +8,11 @@ HOST=$1
 GIT_DIR=$(git rev-parse --show-toplevel)
 PROJECT_NAME=$(basename $GIT_DIR)
 
+~/.myscripts/myrsync.bash $HOST
+
 args=()
 for arg in "${@:2}"; do
   args+=("\"${arg}\"")
 done
 
-ssh $HOST "cd \${HOME}/${PROJECT_NAME} && ${args[@]}"
+ssh -o LogLevel=QUIET -t $HOST "cd \${HOME}/${PROJECT_NAME} && ${args[@]}"
