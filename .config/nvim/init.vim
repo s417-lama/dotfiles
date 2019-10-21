@@ -109,3 +109,9 @@ function! s:vimrc_local(loc)
     source `=i`
   endfor
 endfunction
+
+" LaTeX
+function! s:show_latex_compilation_complete_message(_job_id, _data, _event)
+  echo "LaTeX compilation completed!"
+endfunction
+autocmd BufWritePost *.tex call jobstart('docker run --rm -v $PWD:/workdir gitlab-registry.eidos.ic.i.u-tokyo.ac.jp/shiina/docker-latex/fonts make', {'on_exit': function('s:show_latex_compilation_complete_message')})
