@@ -111,7 +111,26 @@ function! s:vimrc_local(loc)
 endfunction
 
 " LaTeX
-function! s:show_latex_compilation_complete_message(_job_id, _data, _event)
-  echo "LaTeX compilation completed!"
+let s:error_msg = {}
+function! s:show_latex_compilation_record_message(job_id, data, _event)
+  if !has_key(s:error_msg, a:job_id)
+    let s:error_msg[a:job_id] = ['']
+  endif
+  let s:error_msg[a:job_id][-1] .= a:data[0]
+  call extend(s:error_msg[a:job_id], a:data[1:])
 endfunction
-autocmd BufWritePost *.tex call jobstart('docker run --rm -v $PWD:/workdir gitlab-registry.eidos.ic.i.u-tokyo.ac.jp/shiina/docker-latex/fonts make', {'on_exit': function('s:show_latex_compilation_complete_message')})
+
+function! s:show_latex_compilation_complete_message(job_id, data, _event)
+  if a:data == 0
+    echo "LaTeX compilation completed!"
+  else
+    echo join(s:error_msg[a:job_id], "\n")
+  endif
+  call remove(s:error_msg, a:job_id)
+endfunction
+
+autocmd BufWritePost *.tex call jobstart('docker run --rm -v $PWD:/workdir gitlab-registry.eidos.ic.i.u-tokyo.ac.jp/shiina/docker-latex/fonts make', {
+\ 'on_stdout': function('s:show_latex_compilation_record_message'),
+\ 'on_stderr': function('s:show_latex_compilation_record_message'),
+\ 'on_exit':   function('s:show_latex_compilation_complete_message')
+\ })
