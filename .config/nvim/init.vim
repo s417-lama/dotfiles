@@ -55,6 +55,8 @@ augroup project
   autocmd BufRead,BufNewFile *.h,*.c set filetype=c
 augroup END
 
+let mapleader = "\<space>"
+
 " dein
 let s:dein_base_path = '~/.cache/dein'
 let s:dein_path = '~/.cache/dein/repos/github.com/Shougo/dein.vim'
@@ -85,8 +87,6 @@ syntax enable
 set background=dark
 colorscheme hybrid
 hi CursorLineNr ctermbg=8 ctermfg=3 guibg=#2A363E guifg=#81A2BE
-hi ALEErrorSign ctermbg=8 ctermfg=3 guibg=#2A363E guifg=#81A2BE
-hi ALEWarningSign ctermbg=8 ctermfg=3 guibg=#2A363E guifg=#81A2BE
 hi clear SignColumn
 
 " spell

@@ -1,41 +1,46 @@
 [[plugins]]
-repo = 'Shougo/deoplete.nvim'
-hook_add = '''
-  let g:deoplete#enable_at_startup   = 1
-  let g:deoplete#auto_complete_delay = 0
-  let g:deoplete#auto_refresh_delay  = 0
+repo = 'prabirshrestha/async.vim'
 
-  inoremap <silent><expr> <TAB>
-  \ pumvisible() ? "\<C-n>" :
-  \ <SID>check_back_space() ? "\<TAB>" :
-  \ deoplete#mappings#manual_complete()
-  function! s:check_back_space() abort "{{{
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-  endfunction"}}}
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete-lsp.vim'
+
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete.vim'
+hook_add = '''
+  inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
   inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-  inoremap <silent><expr><C-c> pumvisible() ? deoplete#smart_close_popup() : "\<C-c>"
+  inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
 '''
 
 [[plugins]]
-repo = 'dense-analysis/ale'
+repo = 'prabirshrestha/vim-lsp'
 hook_add = '''
-  let g:ale_c_ccls_executable = expand('~/opt/ccls/bin/ccls')
-  let g:ale_cpp_ccls_executable = expand('~/opt/ccls/bin/ccls')
-  let g:ale_elixir_elixir_ls_release = expand('~/opt/elixir-ls')
-  let g:ale_linters = {
-  \ 'c'     : ['ccls'],
-  \ 'cpp'   : ['ccls'],
-  \ 'elixir': ['elixir-ls'],
-  \}
-  let g:ale_linters_explicit = 1
-  let g:ale_fixers = {
-  \ '*': ['remove_trailing_lines', 'trim_whitespace'],
-  \}
+  nnoremap <expr> <silent> <C-]> execute('LspDefinition') =~ "not supported" ? "\<C-]>" : ":echo<cr>"
+  nnoremap <silent> gn :LspNextError<cr>
+  nnoremap <silent> gN :LspPreviousError<cr>
 
-  nmap <silent> <C-]> <Plug>(ale_go_to_definition)
-  nmap <silent> gn    <Plug>(ale_next_wrap)
-  nmap <silent> gN    <Plug>(ale_previous_wrap)
+  nnoremap <silent> <leader>r     :LspReferences<cr>
+  nnoremap <silent> <leader>h     :LspHover<cr>
+  nnoremap <silent> <leader>d     :LspPeekDefinition<cr>
+  nnoremap <silent> <leader><C-d> :LspDefinition<cr>
+  nnoremap <silent> <leader>t     :LspPeekTypeDefinition<cr>
+  nnoremap <silent> <leader><C-t> :LspTypeDefinition<cr>
+  nnoremap <silent> <leader>i     :LspPeekImplementation<cr>
+  nnoremap <silent> <leader><C-i> :LspImplementation<cr>
+
+  " set updatetime=500
+  " autocmd CursorHold * silent! LspHover
+
+  let g:lsp_highlight_references_enabled = 1
+
+  au User lsp_setup call lsp#register_server({
+        \ 'name': 'ccls',
+        \ 'cmd': {server_info->[expand('~/opt/ccls/bin/ccls')]},
+        \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
+        " \ 'root_uri': {server_info->lsp#utils#path_to_uri(system('git rev-parse --show-toplevel))},
+        \ 'initialization_options': {},
+        \ 'whitelist': ['c', 'cpp', 'cc'],
+        \ })
 '''
 
 [[plugins]]
