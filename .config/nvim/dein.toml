@@ -16,8 +16,8 @@ hook_add = '''
 repo = 'prabirshrestha/vim-lsp'
 hook_add = '''
   nnoremap <expr> <silent> <C-]> execute('LspDefinition') =~ "not supported" ? "\<C-]>" : ":echo<cr>"
-  nnoremap <silent> gn :LspNextError<cr>
-  nnoremap <silent> gN :LspPreviousError<cr>
+  nnoremap <silent> gn :LspNextDiagnostic<cr>
+  nnoremap <silent> gN :LspPreviousDiagnostic<cr>
 
   nnoremap <silent> <leader>r     :LspReferences<cr>
   nnoremap <silent> <leader>h     :LspHover<cr>
@@ -40,6 +40,13 @@ hook_add = '''
         " \ 'root_uri': {server_info->lsp#utils#path_to_uri(system('git rev-parse --show-toplevel))},
         \ 'initialization_options': {},
         \ 'whitelist': ['c', 'cpp', 'cc'],
+        \ })
+
+  au User lsp_setup call lsp#register_server({
+        \ 'name': 'texlab',
+        \ 'cmd': {server_info->[expand('~/opt/texlab/texlab')]},
+        \ 'initialization_options': {},
+        \ 'whitelist': ['tex', 'plaintex'],
         \ })
 '''
 
