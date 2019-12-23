@@ -29,9 +29,10 @@ function fish_prompt
   set -l red (set_color red)
   set -l blue (set_color blue)
   set -l green (set_color green)
+  set -l magenta (set_color magenta)
   set -l normal (set_color normal)
 
-  set -l cwd $blue(pwd | sed "s:^$HOME:~:")
+  set -l cwd $magenta(pwd | sed "s:^$HOME:~:")
 
   # Output the prompt, left to right
 
@@ -53,7 +54,7 @@ function fish_prompt
     if [ (_git_is_dirty) ]
       set git_info $yellow $git_branch " *" $normal
     else
-      set git_info $green $git_branch $normal
+      set git_info $blue $git_branch $normal
     end
     echo -n -s ' · ' $git_info $normal
   end
@@ -76,12 +77,12 @@ function fish_prompt
 end
 
 # set color for man
-set -xU LESS_TERMCAP_md (printf "\e[01;34m")
+set -xU LESS_TERMCAP_md (printf "\e[01;35m") # magenta
 set -xU LESS_TERMCAP_me (printf "\e[0m")
 set -xU LESS_TERMCAP_se (printf "\e[0m")
-set -xU LESS_TERMCAP_so (printf "\e[01;40;33m")
+set -xU LESS_TERMCAP_so (printf "\e[01;40;33m") # yellow
 set -xU LESS_TERMCAP_ue (printf "\e[0m")
-set -xU LESS_TERMCAP_us (printf "\e[01;31m")
+set -xU LESS_TERMCAP_us (printf "\e[01;34m") # blue
 
 # aliases
 alias myrsync=~/.myscripts/myrsync.bash
