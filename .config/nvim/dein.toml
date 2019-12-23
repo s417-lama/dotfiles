@@ -94,64 +94,22 @@ hook_add = '''
 '''
 
 #
-# airline
+# lightline
 #
 
 [[plugins]]
-repo = 'vim-airline/vim-airline'
-hook_add = '''
-  let g:airline#extensions#tabline#enabled = 1
-
-  " set color of 'base16_vim' theme for airline
-  let g:base16_gui00 = "2A363E"
-  let g:base16_gui01 = "2A363E"
-  let g:base16_gui02 = "425059"
-  let g:base16_gui03 = "585858"
-  let g:base16_gui04 = "8F9E9A"
-  let g:base16_gui05 = "C5C8C6"
-  let g:base16_gui06 = "e8e8e8"
-  let g:base16_gui07 = "f8f8f8"
-  let g:base16_gui08 = "CC6666"
-  let g:base16_gui09 = "dc9656"
-  let g:base16_gui0A = "f7ca88"
-  let g:base16_gui0B = "81A2BE"
-  let g:base16_gui0C = "86c1b9"
-  let g:base16_gui0D = "C48459"
-  let g:base16_gui0E = "B294BB"
-  let g:base16_gui0F = "a16946"
-  let g:base16_cterm00 = "00"  " black
-  let g:base16_cterm01 = "10"
-  let g:base16_cterm02 = "11"
-  let g:base16_cterm03 = "08"  " brblack
-  let g:base16_cterm04 = "12"
-  let g:base16_cterm05 = "07"  " white
-  let g:base16_cterm06 = "13"
-  let g:base16_cterm07 = "15"
-  let g:base16_cterm08 = "01"  " red
-  let g:base16_cterm09 = "09"
-  let g:base16_cterm0A = "02"  " green
-  let g:base16_cterm0B = "04"  " blue
-  let g:base16_cterm0C = "06"  " cyan
-  let g:base16_cterm0D = "03"  " yellow
-  let g:base16_cterm0E = "05"  " magenta
-  let g:base16_cterm0F = "14"
-  let g:airline_base16_improved_contrast = 1
-
-  let g:airline_powerline_fonts = 1
-  let g:airline_theme = 'base16_vim'
-
-  let g:airline_symbols = {}
-  let g:airline_left_sep = '⮀'
-  let g:airline_left_alt_sep = '⮁'
-  let g:airline_right_sep = '⮂'
-  let g:airline_right_alt_sep = '⮃'
-  let g:airline_symbols.branch = '⭠'
-  let g:airline_symbols.readonly = '⭤'
-  let g:airline_symbols.linenr = '⭡'
-'''
+repo = 's417-lama/base16-terminal-lightline.vim'
 
 [[plugins]]
-repo = 'vim-airline/vim-airline-themes'
+repo = 'itchyny/lightline.vim'
+hook_add = '''
+  set noshowmode
+  let g:lightline = {
+        \ 'colorscheme': 'base16_terminal',
+        \ 'separator': { 'left': '⮀', 'right': '⮂' },
+        \ 'subseparator': { 'left': '⮁', 'right': '⮃'},
+        \ }
+'''
 
 #
 # colorscheme
@@ -161,7 +119,7 @@ repo = 'vim-airline/vim-airline-themes'
 repo = 'w0ng/vim-hybrid'
 hook_add = '''
   let g:hybrid_custom_term_colors = 1
-  let g:hybrid_reduced_contrast = 1
+  " let g:hybrid_reduced_contrast = 1
 '''
 
 [[plugins]]

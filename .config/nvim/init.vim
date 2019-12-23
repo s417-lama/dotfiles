@@ -14,7 +14,7 @@ set incsearch
 set clipboard+=unnamed,unnamedplus
 set laststatus=2
 set ttimeoutlen=10
-set termguicolors
+" set termguicolors
 set encoding=utf-8
 set fileencoding=utf-8
 set ignorecase
@@ -86,16 +86,16 @@ syntax enable
 " colorscheme
 set background=dark
 colorscheme hybrid
-hi CursorLineNr ctermbg=8 ctermfg=3 guibg=#2A363E guifg=#81A2BE
+hi CursorLineNr ctermbg=8 ctermfg=5 " bg=DarkGrey fg=Magenta
 hi clear SignColumn
 
 " spell
 autocmd FileType plaintex,tex,latex setlocal spell
 set spelllang=en,cjk
 hi clear SpellBad
-hi SpellBad gui=underline,bold guibg=#2D3C46
+hi SpellBad cterm=underline,bold ctermbg=8 " bg=DarkGrey
 hi clear SpellCap
-hi SpellCap gui=underline,bold
+hi SpellCap cterm=underline,bold
 
 " .vimrc.local
 augroup vimrc-local
