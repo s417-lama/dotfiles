@@ -1,6 +1,6 @@
 set number
 set title
-set ambiwidth=double
+" set ambiwidth=double
 set tabstop=2
 set expandtab
 set shiftwidth=2
