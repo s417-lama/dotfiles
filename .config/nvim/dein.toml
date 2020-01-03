@@ -38,7 +38,7 @@ hook_add = '''
         \ 'cmd': {server_info->[expand('~/opt/ccls/bin/ccls')]},
         \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
         " \ 'root_uri': {server_info->lsp#utils#path_to_uri(system('git rev-parse --show-toplevel))},
-        \ 'initialization_options': {},
+        \ 'initialization_options': {'completion': {'detailedLabel': v:false}},
         \ 'whitelist': ['c', 'cpp', 'cc'],
         \ })
 
@@ -116,6 +116,9 @@ hook_add = '''
         " \ 'subseparator': {'left': "", 'right': ""},
         \ 'tabline_separator': {'left': "", 'right': ""},
         \ 'tabline_subseparator': {'left': "", 'right': ""},
+        " \ 'separator': {'left': "", 'right': ""},
+        " \ 'subseparator': {'left': "", 'right': ""},
+        " \ 'subseparator': {'left': "", 'right': ""},
         \ }
 '''
 
