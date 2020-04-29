@@ -1,4 +1,12 @@
 #!/bin/bash
+#
+# Convert an SVG file to a PDF file by using headless Chrome.
+#
+
+if [ $# -ne 2 ]; then
+  echo "Usage: ./svg2pdf.bash input.svg output.pdf" 1>&2
+  exit 1
+fi
 
 INPUT=$1
 OUTPUT=$2
@@ -35,3 +43,4 @@ trap "rm -f $tmpfile" EXIT
 echo $HTML > $tmpfile
 
 google-chrome --headless --disable-gpu --print-to-pdf=$OUTPUT $tmpfile
+
