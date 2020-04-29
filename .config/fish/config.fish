@@ -89,6 +89,7 @@ alias myrsync=~/.myscripts/myrsync.bash
 alias remote_run=~/.myscripts/remote_run.bash
 alias remote_nohup=~/.myscripts/remote_nohup.bash
 alias svgcrop=~/.myscripts/svgcrop.bash
+alias svg2pdf=~/.myscripts/svg2pdf.bash
 
 # paths
 source ~/.asdf/asdf.fish
