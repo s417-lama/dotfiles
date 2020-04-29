@@ -1,5 +1,6 @@
 *.ignore
 myscripts
+myopt
 *.swp
 tags
 .ctags
