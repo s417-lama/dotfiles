@@ -5,6 +5,7 @@ myopt
 tags
 .ctags
 .vimrc.local
+.ccls
 .ccls-cache
 .elixir_ls
 compile_commands.json

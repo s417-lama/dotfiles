@@ -43,4 +43,3 @@ trap "rm -f $tmpfile" EXIT
 echo $HTML > $tmpfile
 
 google-chrome --headless --disable-gpu --print-to-pdf=$OUTPUT $tmpfile
-

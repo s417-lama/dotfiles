@@ -129,7 +129,7 @@ function! s:show_latex_compilation_complete_message(job_id, data, _event)
   call remove(s:error_msg, a:job_id)
 endfunction
 
-autocmd BufWritePost *.tex call jobstart('docker run --rm -v $PWD:/workdir gitlab-registry.eidos.ic.i.u-tokyo.ac.jp/shiina/docker-latex/fonts make', {
+autocmd BufWritePost *.tex call jobstart('docker run --rm -v $HOME:$HOME -w $PWD gitlab-registry.eidos.ic.i.u-tokyo.ac.jp/shiina/docker-latex/fonts make', {
 \ 'on_stdout': function('s:show_latex_compilation_record_message'),
 \ 'on_stderr': function('s:show_latex_compilation_record_message'),
 \ 'on_exit':   function('s:show_latex_compilation_complete_message')
