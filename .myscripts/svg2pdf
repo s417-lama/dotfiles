@@ -4,7 +4,7 @@
 #
 
 if [ $# -ne 2 ]; then
-  echo "Usage: ./svg2pdf.bash input.svg output.pdf" 1>&2
+  echo "Usage: ./svg2pdf input.svg output.pdf" 1>&2
   exit 1
 fi
 

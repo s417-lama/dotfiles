@@ -8,7 +8,7 @@ HOST=$1
 GIT_DIR=$(git rev-parse --show-toplevel)
 PROJECT_NAME=$(basename $GIT_DIR)
 
-~/.myscripts/myrsync.bash $HOST
+~/.myscripts/myrsync $HOST
 
 args=()
 for arg in "${@:2}"; do
