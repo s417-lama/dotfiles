@@ -84,14 +84,8 @@ set -xU LESS_TERMCAP_so (printf "\e[01;40;33m") # yellow
 set -xU LESS_TERMCAP_ue (printf "\e[0m")
 set -xU LESS_TERMCAP_us (printf "\e[01;34m") # blue
 
-# aliases
-alias myrsync=~/.myscripts/myrsync.bash
-alias remote_run=~/.myscripts/remote_run.bash
-alias remote_nohup=~/.myscripts/remote_nohup.bash
-alias svgcrop=~/.myscripts/svgcrop.bash
-alias svg2pdf=~/.myscripts/svg2pdf.bash
-
 # paths
+set -gx PATH ~/.myscripts $PATH
 source ~/.asdf/asdf.fish
 set -gx PATH (asdf where elixir)/.mix/escripts $PATH
 source $HOME/.cargo/env
