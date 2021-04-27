@@ -7,5 +7,7 @@ tags
 .vimrc.local
 .ccls
 .ccls-cache
+.clangd
 .elixir_ls
 compile_commands.json
+*.pdfpc

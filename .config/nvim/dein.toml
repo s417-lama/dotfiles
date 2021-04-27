@@ -1,7 +1,4 @@
 [[plugins]]
-repo = 'prabirshrestha/async.vim'
-
-[[plugins]]
 repo = 'prabirshrestha/asyncomplete-lsp.vim'
 
 [[plugins]]
@@ -9,7 +6,7 @@ repo = 'prabirshrestha/asyncomplete.vim'
 hook_add = '''
   inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
   inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-  inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+  inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() . "\<cr>" : "\<cr>"
 '''
 
 [[plugins]]
@@ -30,24 +27,23 @@ hook_add = '''
 
   " set updatetime=500
   " autocmd CursorHold * silent! LspHover
+'''
 
-  let g:lsp_highlight_references_enabled = 1
-
-  au User lsp_setup call lsp#register_server({
-        \ 'name': 'ccls',
-        \ 'cmd': {server_info->[expand('~/opt/ccls/bin/ccls')]},
-        \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
-        " \ 'root_uri': {server_info->lsp#utils#path_to_uri(system('git rev-parse --show-toplevel))},
-        \ 'initialization_options': {'completion': {'detailedLabel': v:false}},
-        \ 'whitelist': ['c', 'cpp', 'cc'],
-        \ })
-
-  au User lsp_setup call lsp#register_server({
-        \ 'name': 'texlab',
-        \ 'cmd': {server_info->[expand('~/opt/texlab/texlab')]},
-        \ 'initialization_options': {},
-        \ 'whitelist': ['tex', 'plaintex'],
-        \ })
+[[plugins]]
+repo = 'mattn/vim-lsp-settings'
+hook_add = '''
+  let g:lsp_settings = {
+        \   'pyls-all': {
+        \     'workspace_config': {
+        \       'pyls': {
+        \         'plugins': {
+        \           'pycodestyle': {'enabled': v:false},
+        \           'mccabe': {'enabled': v:false},
+        \         }
+        \       }
+        \     }
+        \   },
+        \ }
 '''
 
 [[plugins]]
@@ -109,20 +105,27 @@ hook_add = '''
   set noshowmode
   let g:lightline = {
         \ 'colorscheme': 'base16_terminal',
-        " \ 'separator': {'left': "", 'right': ""},
-        " \ 'subseparator': {'left': "", 'right': ""},
-        " \ 'separator': {'left': "", 'right': ""},
-        " \ 'subseparator': {'left': "", 'right': ""},
         \ 'separator': {'left': "", 'right': ""},
         \ 'subseparator': {'left': "", 'right': ""},
-        " \ 'separator': {'left': "", 'right': ""},
-        " \ 'subseparator': {'left': "", 'right': ""},
         \ 'tabline_separator': {'left': "", 'right': ""},
         \ 'tabline_subseparator': {'left': "", 'right': ""},
-        " \ 'separator': {'left': "", 'right': ""},
-        " \ 'subseparator': {'left': "", 'right': ""},
-        " \ 'subseparator': {'left': "", 'right': ""},
         \ }
+  " let g:lightline = {
+  "       \ 'colorscheme': 'base16_terminal',
+  "       \ 'separator': {'left': "", 'right': ""},
+  "       \ 'subseparator': {'left': "", 'right': ""},
+  "       \ 'separator': {'left': "", 'right': ""},
+  "       \ 'subseparator': {'left': "", 'right': ""},
+  "       \ 'separator': {'left': "", 'right': ""},
+  "       \ 'subseparator': {'left': "", 'right': ""},
+  "       \ 'separator': {'left': "", 'right': ""},
+  "       \ 'subseparator': {'left': "", 'right': ""},
+  "       \ 'tabline_separator': {'left': "", 'right': ""},
+  "       \ 'tabline_subseparator': {'left': "", 'right': ""},
+  "       \ 'separator': {'left': "", 'right': ""},
+  "       \ 'subseparator': {'left': "", 'right': ""},
+  "       \ 'subseparator': {'left': "", 'right': ""},
+  "       \ }
 '''
 
 #

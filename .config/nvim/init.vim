@@ -50,12 +50,11 @@ noremap! <C-j> <esc>
 
 nnoremap <C-]> g<C-]>
 
-augroup project
-  autocmd!
-  autocmd BufRead,BufNewFile *.h,*.c set filetype=c
-augroup END
-
 let mapleader = "\<space>"
+
+" gdb
+packadd termdebug
+tnoremap <C-j> <C-\><C-n>
 
 " dein
 let s:dein_base_path = '~/.cache/dein'
