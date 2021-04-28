@@ -92,6 +92,10 @@ source $HOME/.cargo/env
 set -gx PATH /usr/local/cuda/bin $PATH
 set -gx LD_LIBRARY_PATH /usr/local/cuda/lib64 $LD_LIBRARY_PATH
 set -gx PATH ~/.isola/bin $PATH
+set -gx PATH ~/.local/bin $PATH
+
+# for NeoVim remote
+set -gx NVIM_LISTEN_ADDRESS .nvim_comm.ignore
 
 function fish_greeting
   printf "\e[49m       \e[38;5;236m\u2584\e[48;5;236m\e[38;5;132m\u2584\e[38;5;174m\u2584\u2584\u2584\e[38;5;132m\u2584\e[49m\e[38;5;236m\u2584

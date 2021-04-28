@@ -1,0 +1,85 @@
+#!/bin/bash
+set -euo pipefail
+export LC_ALL=C
+export LANG=C
+
+if !(type reptyr > /dev/null 2>&1); then
+  echo "Please install 'reptyr' command." >&2
+  exit 1
+fi
+
+if [[ -z ${TMUX+x} ]]; then
+  echo "Please run this command within a tmux session." >&2
+  exit 1
+fi
+
+if [[ $# < 1 ]]; then
+  echo "Usage: $0 COMMANDS..." >&2
+  echo >&2
+  echo "Example: $0 bash" >&2
+  echo "         $0 bash -c \"echo hoge; sleep 3\"" >&2
+  echo "         $0 gdb <file>" >&2
+  exit 1
+fi
+
+# Put quotes correctly in the command
+CMDS=()
+for i in "$@"; do
+  if [[ $i =~ [[:space:]] ]]; then
+    i=\"$i\"
+  fi
+  CMDS+=("$i")
+done
+COMMANDS="(echo; "${CMDS[@]}")"
+
+# Compile a program to call 'ioctl' syscall
+SET_PTY_CMD=$(mktemp)
+gcc -o $SET_PTY_CMD -x c - <<EOF
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+#include <fcntl.h>
+#include <sys/ioctl.h>
+
+int main(int argc, char **argv) {
+  if (argc < 3) {
+    fprintf(stderr, "Usage: %s /dev/pts/XX COMMANDS\n", argv[0]);
+    exit(1);
+  }
+
+  int fd = open(argv[1], O_RDWR);
+  if (fd == -1) {
+    perror("open");
+    exit(1);
+  }
+
+  if (ioctl(fd, TIOCSCTTY, 0) != 0) {
+    perror("ioctl");
+    exit(1);
+  }
+
+  dup2(fd, STDIN_FILENO);
+  dup2(fd, STDOUT_FILENO);
+  dup2(fd, STDERR_FILENO);
+
+  argv += 2;
+  execvp(argv[0], argv);
+  return 0;
+}
+EOF
+
+# temp file for forwarding /dev/pts/xxx of 'reptyr' to host
+TMPFILE=$(mktemp)
+touch $TMPFILE
+trap "rm -f $SET_PTY_CMD $TMPFILE" EXIT
+
+# split the tmux pane and run 'reptyr -l' on it
+tmux split-window bash -c "trap \"rm -f $TMPFILE\" EXIT; reptyr -l | tee $TMPFILE"
+
+# '--follow=name' rather than '-f' to exit when the file is deleted
+tail --follow=name $TMPFILE |
+  head -1 |
+  stdbuf -oL grep 'Opened a new pty:' |
+  stdbuf -oL cut -d ' ' -f 5 |
+  xargs -I DEVPTS setsid $SET_PTY_CMD DEVPTS bash -c "$COMMANDS"
