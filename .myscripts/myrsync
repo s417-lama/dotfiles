@@ -7,4 +7,4 @@ HOST=$1
 
 GIT_DIR=$(git rev-parse --show-toplevel)
 PROJECT_NAME=$(basename $GIT_DIR)
-rsync -avh --exclude='.git' --exclude='results' --exclude='myopt' --include='myscripts' --filter=":- ${GIT_DIR}/.gitignore" --filter=":- ${HOME}/.gitignore_global" --filter '-_.nfs*' --delete -e ssh ${GIT_DIR}/ ${HOST}:\${HOME}/${PROJECT_NAME}
+rsync -avh --exclude='.git' --exclude='results' --exclude='myopt' --include='myscripts' --filter=":- ${GIT_DIR}/.gitignore" --filter=":- ${HOME}/.gitignore_global" --filter '-_.nfs*' --filter '-_*_nodeinfo' --delete -e ssh ${GIT_DIR}/ ${HOST}:\${HOME}/${PROJECT_NAME}

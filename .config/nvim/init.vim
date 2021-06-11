@@ -55,6 +55,7 @@ let mapleader = "\<space>"
 " gdb
 packadd termdebug
 tnoremap <C-j> <C-\><C-n>
+autocmd FileType rust let termdebugger = "rust-gdb"
 
 " dein
 let s:dein_base_path = '~/.cache/dein'

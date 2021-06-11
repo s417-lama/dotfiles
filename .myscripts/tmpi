@@ -1,7 +1,4 @@
 #!/bin/bash
-set -euo pipefail
-export LC_ALL=C
-export LANG=C
 
 # Copyright 2013 Benedikt Morbach <moben@exherbo.org>
 # Distributed under the terms of the GNU General Public License v2
@@ -114,6 +111,8 @@ if [[ ${1} == runmpi ]] ; then
         stdbuf -oL grep 'Opened a new pty:' |
         stdbuf -oL cut -d ' ' -f 5 |
         xargs -I DEVPTS setsid $setpty_cmd DEVPTS bash -c "$commands"
+
+    echo Rank $rank exits
 else
     # we are the parent and set everything up before we start ourselves a bunch of times via mpirun.
     processes=${1}
