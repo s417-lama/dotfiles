@@ -14,11 +14,11 @@ function fish_user_key_bindings
 end
 
 function _git_branch_name
-  echo (command git symbolic-ref HEAD ^/dev/null | sed -e 's|^refs/heads/||')
+  echo (command git symbolic-ref HEAD 2> /dev/null | sed -e 's|^refs/heads/||')
 end
 
 function _git_is_dirty
-  echo (command git status -s --ignore-submodules=dirty ^/dev/null)
+  echo (command git status -s --ignore-submodules=dirty 2> /dev/null)
 end
 
 function fish_prompt
@@ -76,6 +76,27 @@ function fish_prompt
   echo -e -n -s $prompt_color '⟩ ' $normal
 end
 
+# colors
+set fish_color_normal         brwhite
+set fish_color_command        white --bold
+set fish_color_quote          yellow
+set fish_color_redirection    blue
+set fish_color_end            blue --bold
+set fish_color_error          red --bold
+set fish_color_param          brpurple
+set fish_color_comment        white
+set fish_color_selection      brwhite --bold --background brblack
+set fish_color_operator       blue --bold
+set fish_color_escape         green
+set fish_color_autosuggestion white
+set fish_color_cancel         yellow --bold --background brblack
+
+set fish_pager_color_progress    yellow --bold --background brblack
+set fish_pager_color_background  brblack
+set fish_pager_color_prefix      write --bold --underline
+set fish_pager_color_completion  brwhite
+set fish_pager_color_description green
+
 # set color for man
 set -xU LESS_TERMCAP_md (printf "\e[01;35m") # magenta
 set -xU LESS_TERMCAP_me (printf "\e[0m")
@@ -86,9 +107,7 @@ set -xU LESS_TERMCAP_us (printf "\e[01;34m") # blue
 
 # paths
 set -gx PATH ~/.myscripts $PATH
-source ~/.asdf/asdf.fish
-set -gx PATH (asdf where elixir)/.mix/escripts $PATH
-source $HOME/.cargo/env
+set -gx PATH ~/.cargo/bin $PATH
 set -gx PATH /usr/local/cuda/bin $PATH
 set -gx LD_LIBRARY_PATH /usr/local/cuda/lib64 $LD_LIBRARY_PATH
 set -gx PATH ~/.isola/bin $PATH
