@@ -77,18 +77,18 @@ function fish_prompt
 end
 
 # colors
-set fish_color_normal         brwhite
-set fish_color_command        white --bold
-set fish_color_quote          yellow
-set fish_color_redirection    blue
-set fish_color_end            blue --bold
-set fish_color_error          red --bold
-set fish_color_param          brpurple
-set fish_color_comment        white
-set fish_color_selection      brwhite --bold --background brblack
-set fish_color_operator       blue --bold
-set fish_color_escape         green
-set fish_color_autosuggestion white
+set fish_color_normal         brwhite --italics
+set fish_color_command        white --bold --italics
+set fish_color_quote          yellow --italics
+set fish_color_redirection    blue --italics
+set fish_color_end            blue --bold --italics
+set fish_color_error          red --italics
+set fish_color_param          brwhite --italics
+set fish_color_comment        white --italics
+set fish_color_selection      brwhite --bold --background brblack --italics
+set fish_color_operator       blue --bold --italics
+set fish_color_escape         green --bold --italics
+set fish_color_autosuggestion white --italics
 set fish_color_cancel         yellow --bold --background brblack
 
 set fish_pager_color_progress    yellow --bold --background brblack
@@ -128,5 +128,5 @@ function fish_greeting
 \e[48;5;236m \e[48;5;174m \e[48;5;236m \e[49m   \e[38;5;236m\u2580\e[48;5;174m\u2584\e[48;5;218m\e[38;5;239m\u2584\e[38;5;174m\u2584\e[48;5;174m\e[38;5;218m\u2584\u2584\e[48;5;239m\e[38;5;174m\u2584\e[48;5;236m \e[49m\e[38;5;236m\u2580\e[48;5;174m\u2584\u2584\e[49m\u2580
 \u2580\e[48;5;239m\u2584\e[48;5;174m\e[38;5;239m\u2584\e[48;5;236m\e[38;5;174m\u2584\e[49m\e[38;5;236m\u2584\u2584\u2584\e[48;5;236m\e[38;5;218m\u2584\e[48;5;218m  \e[48;5;132m \e[48;5;218m \e[48;5;239m \e[48;5;174m \e[48;5;236m \e[49m
   \e[38;5;236m\u2580\u2580\e[48;5;132m\u2584\u2584\e[48;5;239m\e[38;5;174m\u2584\e[48;5;174m\e[38;5;132m\u2584\e[48;5;218m\e[38;5;239m\u2584\e[48;5;132m\e[38;5;236m\u2584\e[48;5;174m\u2584\e[48;5;239m \e[38;5;132m\u2584\e[48;5;236m \e[49m
-     \e[48;5;236m \e[48;5;174m\e[38;5;218m\u2584\e[38;5;132m\u2584\e[48;5;236m \e[49m  \e[38;5;236m\u2580\u2580            \e[38;5;174m- Mew -\e[39m\n"
+     \e[48;5;236m \e[48;5;174m\e[38;5;218m\u2584\e[38;5;132m\u2584\e[48;5;236m \e[49m  \e[38;5;236m\u2580\u2580            \e[38;5;174m\e[3m- Mew -\e[39m\n"
 end
