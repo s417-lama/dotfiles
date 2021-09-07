@@ -12,7 +12,7 @@ hook_add = '''
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
 hook_add = '''
-  nnoremap <expr> <silent> <C-]> execute('LspDefinition') =~ "not supported" ? "\<C-]>" : ":echo<cr>"
+  nnoremap <expr> <C-]> execute('LspPeekDefinition') =~ "not supported" ? "\<C-]>" : ":LspDefinition<cr>"
   nnoremap <silent> gn :LspNextDiagnostic<cr>
   nnoremap <silent> gN :LspPreviousDiagnostic<cr>
 
@@ -25,6 +25,8 @@ hook_add = '''
   nnoremap <silent> <leader>i     :LspPeekImplementation<cr>
   nnoremap <silent> <leader><C-i> :LspImplementation<cr>
 
+  let g:lsp_document_code_action_signs_enabled = 0
+
   " set updatetime=500
   " autocmd CursorHold * silent! LspHover
 '''
@@ -33,6 +35,9 @@ hook_add = '''
 repo = 'mattn/vim-lsp-settings'
 hook_add = '''
   let g:lsp_settings = {
+        \   'clangd': {
+        \     'args': ['--header-insertion=never']
+        \   },
         \   'pylsp-all': {
         \     'workspace_config': {
         \       'pylsp': {
