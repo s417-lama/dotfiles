@@ -100,6 +100,9 @@ hook_add = '''
 [[plugins]]
 repo = 'plasticboy/vim-markdown'
 hook_add = '''
+  " Markdown can be easily gets wrong syntax highlight
+  au BufEnter *.md,*.markdown syn sync fromstart
+  " let g:vim_markdown_folding_disabled = 1
   let g:vim_markdown_folding_style_pythonic = 1
   let g:vim_markdown_strikethrough = 1
   let g:vim_markdown_new_list_item_indent = 0
