@@ -52,9 +52,12 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'yssl/QFEnter'
+
+[[plugins]]
 repo = 'tpope/vim-commentary'
 hook_add = '''
-  vmap f gc
+  vmap <space> gc
 '''
 
 [[plugins]]
@@ -77,17 +80,6 @@ repo = 'JuliaEditorSupport/julia-vim'
 repo = 'elixir-editors/vim-elixir'
 
 [[plugins]]
-repo = 'cespare/vim-toml'
-on_ft = 'toml'
-
-[[plugins]]
-repo = 'osyo-manga/vim-precious'
-depends = ['context_filetype.vim']
-
-[[plugins]]
-repo = 'Shougo/context_filetype.vim'
-
-[[plugins]]
 repo = 'pangloss/vim-javascript'
 
 [[plugins]]
@@ -102,12 +94,15 @@ repo = 'plasticboy/vim-markdown'
 hook_add = '''
   " Markdown can be easily gets wrong syntax highlight
   au BufEnter *.md,*.markdown syn sync fromstart
-  " let g:vim_markdown_folding_disabled = 1
+  let g:vim_markdown_folding_disabled = 1
   let g:vim_markdown_folding_style_pythonic = 1
   let g:vim_markdown_strikethrough = 1
   let g:vim_markdown_new_list_item_indent = 0
   let g:vim_markdown_toc_autofit = 1
 '''
+
+[[plugins]]
+repo = 'qnighy/satysfi.vim'
 
 #
 # lightline
