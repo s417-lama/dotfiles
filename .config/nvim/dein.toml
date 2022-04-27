@@ -85,10 +85,10 @@ repo = 'bronson/vim-trailing-whitespace'
 repo = 'christoomey/vim-tmux-navigator'
 hook_add = '''
   let g:tmux_navigator_no_mappings = 1
-  nnoremap <silent> <C-[> :TmuxNavigateLeft<cr>
-  nnoremap <silent> <C-q> :TmuxNavigateDown<cr>
-  nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
-  nnoremap <silent> <C-s> :TmuxNavigateRight<cr>
+  nnoremap <silent> <C-0> :TmuxNavigateLeft<cr>
+  nnoremap <silent> <C-1> :TmuxNavigateDown<cr>
+  nnoremap <silent> <C-2> :TmuxNavigateUp<cr>
+  nnoremap <silent> <C-3> :TmuxNavigateRight<cr>
 '''
 
 [[plugins]]
