@@ -27,6 +27,9 @@ hook_add = '''
 
   let g:lsp_document_code_action_signs_enabled = 0
 
+  let g:lsp_diagnostics_float_cursor = 1
+  let g:lsp_diagnostics_float_delay = 500
+
   " set updatetime=500
   " autocmd CursorHold * silent! LspHover
 '''
@@ -36,7 +39,8 @@ repo = 'mattn/vim-lsp-settings'
 hook_add = '''
   let g:lsp_settings = {
         \   'clangd': {
-        \     'args': ['--header-insertion=never']
+        \     'cmd': ['clangd-14'],
+        \     'args': ['--header-insertion=never'],
         \   },
         \   'pylsp-all': {
         \     'workspace_config': {
@@ -49,6 +53,20 @@ hook_add = '''
         \     }
         \   },
         \ }
+'''
+
+[[plugins]]
+repo = 'junegunn/fzf'
+build = './install --all'
+merged = '0'
+
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+depends = ['fzf']
+hook_add = '''
+  nnoremap <silent> <leader>f :GFiles<cr>
+  nnoremap <silent> <leader>b :Buffers<cr>
+  nnoremap <silent> <leader>g :Rg<cr>
 '''
 
 [[plugins]]

@@ -22,6 +22,7 @@ set smartcase
 set completeopt-=preview
 set wildmenu
 set wildmode=list:longest,list:full
+set backupcopy=yes
 
 noremap j gj
 noremap k gk

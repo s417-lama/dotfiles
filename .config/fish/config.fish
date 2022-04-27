@@ -126,6 +126,13 @@ set -gx BAT_THEME base16
 set -gx FZF_DEFAULT_COMMAND "fd --type f --color=always"
 set -gx FZF_DEFAULT_OPTS "--layout=reverse --inline-info --color=16 --ansi"
 fzf_configure_bindings --directory=\ct --git_log=\cg
+function fzf --wraps=fzf --description="Use fzf-tmux if in tmux session"
+  if set --query TMUX
+    fzf-tmux -p 80% $argv
+  else
+    command fzf $argv
+  end
+end
 
 function fish_greeting
   printf "\e[49m       \e[38;5;236m\u2584\e[48;5;236m\e[38;5;132m\u2584\e[38;5;174m\u2584\u2584\u2584\e[38;5;132m\u2584\e[49m\e[38;5;236m\u2584

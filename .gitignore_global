@@ -8,6 +8,7 @@ tags
 .ccls
 .ccls-cache
 .clangd
+.cache
 .elixir_ls
 compile_commands.json
 compile_flags.txt
