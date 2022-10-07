@@ -39,8 +39,7 @@ repo = 'mattn/vim-lsp-settings'
 hook_add = '''
   let g:lsp_settings = {
         \   'clangd': {
-        \     'cmd': ['clangd-14'],
-        \     'args': ['--header-insertion=never'],
+        \     'cmd': ['clangd-14', '--header-insertion=never'],
         \   },
         \   'pylsp-all': {
         \     'workspace_config': {
@@ -186,9 +185,11 @@ repo = 'rakr/vim-one'
 repo = 's417-lama/carbonpaper.vim'
 hook_add = '''
   let g:carbonpaper#colorscheme          = 'PaperColor'
+  " let g:carbonpaper#colorscheme          = 'pencil'
   let g:carbonpaper#background           = 'light'
   let g:carbonpaper#set_background_color = 0
   " let g:carbonpaper#highlight_bold       = 1
+  " set termguicolors
 '''
 
 [[plugins]]
