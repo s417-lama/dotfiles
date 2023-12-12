@@ -1,7 +1,7 @@
 set number
 set title
 " set ambiwidth=double
-set tabstop=2
+set tabstop=8
 set expandtab
 set shiftwidth=2
 set smartindent
@@ -14,7 +14,7 @@ set incsearch
 set clipboard+=unnamed,unnamedplus
 set laststatus=2
 set ttimeoutlen=10
-" set termguicolors
+set notermguicolors
 set encoding=utf-8
 set fileencoding=utf-8
 set ignorecase
