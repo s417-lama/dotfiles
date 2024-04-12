@@ -1,0 +1,42 @@
+[window]
+opacity = 0.85
+padding = { x = 2, y = 0 }
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[colors.bright]
+black   = "#4D444A"
+red     = "#DA7575"
+green   = "#B5BD68"
+yellow  = "#DE935F"
+blue    = "#93B2CD"
+magenta = "#BB9FC3"
+cyan    = "#96C7C1"
+white   = "#CDD0CE"
+
+[colors.normal]
+black   = "#3C3339"
+red     = "#CC6666"
+green   = "#8C9440"
+yellow  = "#C48459"
+blue    = "#81A2BE"
+magenta = "#B294BB"
+cyan    = "#8ABEB7"
+white   = "#6C7A80"
+
+[colors.primary]
+background = "#352E33"
+foreground = "#CDD0CE"
+
+[font]
+size = 12
+offset = { x = 2, y = 1 }
+
+[font.normal]
+family = "PlemolJP with Terminal Glyphs"
+
+[keyboard]
+bindings = [
+{ key = "Return", mods = "Command", action = "ToggleSimpleFullscreen" },
+]

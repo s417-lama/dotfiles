@@ -12,7 +12,7 @@ ln -sf $DIR/.config/libinput-gestures.conf ~/.config/libinput-gestures.conf
 mkdir -p ~/.config/fish
 ln -sf $DIR/.config/fish/config.fish ~/.config/fish/config.fish
 mkdir -p ~/.config/alacritty
-ln -sf $DIR/.config/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
+ln -sf $DIR/.config/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
 mkdir -p ~/.cgdb
 ln -sf $DIR/.cgdb/cgdbrc ~/.cgdb/cgdbrc
 mkdir -p ~/.config/nvim

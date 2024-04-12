@@ -113,7 +113,6 @@ set -gx PATH ~/.myscripts $PATH
 set -gx PATH ~/.cargo/bin $PATH
 set -gx PATH /usr/local/cuda/bin $PATH
 set -gx LD_LIBRARY_PATH /usr/local/cuda/lib64 $LD_LIBRARY_PATH
-set -gx PATH ~/.isola/bin $PATH
 set -gx PATH ~/.local/bin $PATH
 
 # for NeoVim remote
@@ -147,4 +146,17 @@ function fish_greeting
 \u2580\e[48;5;239m\u2584\e[48;5;174m\e[38;5;239m\u2584\e[48;5;236m\e[38;5;174m\u2584\e[49m\e[38;5;236m\u2584\u2584\u2584\e[48;5;236m\e[38;5;218m\u2584\e[48;5;218m  \e[48;5;132m \e[48;5;218m \e[48;5;239m \e[48;5;174m \e[48;5;236m \e[49m
   \e[38;5;236m\u2580\u2580\e[48;5;132m\u2584\u2584\e[48;5;239m\e[38;5;174m\u2584\e[48;5;174m\e[38;5;132m\u2584\e[48;5;218m\e[38;5;239m\u2584\e[48;5;132m\e[38;5;236m\u2584\e[48;5;174m\u2584\e[48;5;239m \e[38;5;132m\u2584\e[48;5;236m \e[49m
      \e[48;5;236m \e[48;5;174m\e[38;5;218m\u2584\e[38;5;132m\u2584\e[48;5;236m \e[49m  \e[38;5;236m\u2580\u2580            \e[38;5;174m\e[3m- Mew -\e[39m\n"
+end
+
+set -l os (uname)
+if test "$os" = Darwin
+  set -l brewpath "/opt/homebrew"
+  set -gx HOMEBREW_PREFIX "$brewpath";
+  set -gx HOMEBREW_CELLAR "$brewpath/Cellar";
+  set -gx HOMEBREW_REPOSITORY "$brewpath";
+  fish_add_path -gPm "$brewpath/bin" "$brewpath/sbin";
+  ! set -q MANPATH; and set MANPATH ''; set -gx MANPATH "$brewpath/share/man" $MANPATH;
+  ! set -q INFOPATH; and set INFOPATH ''; set -gx INFOPATH "$brewpath/share/info" $INFOPATH;
+
+  alias vim nvim
 end

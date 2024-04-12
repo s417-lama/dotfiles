@@ -59,8 +59,24 @@ tnoremap <C-j> <C-\><C-n>
 autocmd FileType rust let termdebugger = "rust-gdb"
 
 " dein
-let s:dein_base_path = '~/.cache/dein'
-let s:dein_path = '~/.cache/dein/repos/github.com/Shougo/dein.vim'
+let $CACHE = expand('~/.cache')
+if !($CACHE->isdirectory())
+  call mkdir($CACHE, 'p')
+endif
+if &runtimepath !~# '/dein.vim'
+  let s:dir = 'dein.vim'->fnamemodify(':p')
+  if !(s:dir->isdirectory())
+    let s:dir = $CACHE .. '/dein/repos/github.com/Shougo/dein.vim'
+    if !(s:dir->isdirectory())
+      execute '!git clone https://github.com/Shougo/dein.vim' s:dir
+    endif
+  endif
+  execute 'set runtimepath^='
+        \ .. s:dir->fnamemodify(':p')->substitute('[/\\]$', '', '')
+endif
+
+let s:dein_base_path = $CACHE .. '/dein'
+let s:dein_path = s:dein_base_path .. '/repos/github.com/Shougo/dein.vim'
 let s:toml_dir = '~/.config/nvim'
 
 if &compatible
