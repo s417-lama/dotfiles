@@ -1,0 +1,3 @@
+[submodule "fonts/terminal-glyph-patcher"]
+	path = fonts/terminal-glyph-patcher
+	url = https://github.com/s417-lama/terminal-glyph-patcher.git
