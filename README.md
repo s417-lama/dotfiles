@@ -2,11 +2,14 @@
 
 Install:
 - fish
+    - Install fisher: https://github.com/jorgebucaran/fisher
+    - Install fish-async-prompt
+        - `fisher install acomagu/fish-async-prompt`
 - neovim
 - tmux
 - fzf
-    - Install fisher: https://github.com/jorgebucaran/fisher
-    - Install fzf.fish: https://github.com/PatrickF1/fzf.fish
+    - Install fzf.fish via fisher
+        - `fisher install PatrickF1/fzf.fish`
     - Install the following commands:
         - bat: https://github.com/sharkdp/bat
         - fd: https://github.com/sharkdp/fd
