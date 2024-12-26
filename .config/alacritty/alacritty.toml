@@ -39,4 +39,7 @@ family = "PlemolJP with Terminal Glyphs"
 [keyboard]
 bindings = [
 { key = "Return", mods = "Command", action = "ToggleSimpleFullscreen" },
+{ key = "N", mods = "Command", action = "CreateNewWindow" },
+{ key = "[", mods = "Command", action = "DecreaseFontSize" },
+{ key = "]", mods = "Command", action = "IncreaseFontSize" },
 ]
